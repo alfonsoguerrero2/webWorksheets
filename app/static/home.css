@@ -1,0 +1,41 @@
+/* personalized.css */
+
+/* Custom styles for the image */
+img {
+    border: 5px solid #4CAF50;
+    border-radius: 50%;
+    box-shadow: 5px 5px 10px #888;
+  }
+  
+  /* Custom styles for the "card" element */
+  .card {
+    background-color: #e0fdc4;
+    border: 2px solid #17b311;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 5px 5px 10px #888;
+  }
+  
+  /* Custom styles for the "Set Goal" button */
+  .btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: 2px solid #0056b3;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-weight: bold;
+  }
+  
+  /* Custom styles for the form input field */
+  .goal_form {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #f0f0f0;
+  }
+  
+  /* Add more custom styles as needed */
+  

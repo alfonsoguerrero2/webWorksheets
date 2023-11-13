@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- table code/format taken from bootstarp. -->
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">name</th>
+            <th scope="col">amount</th>
+            <th scope="col">delete</th>
+            <th scope="col">edit</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for income in incomes %}
+          <tr>
+            <th scope="row">{{ income.id }}</th>
+            <td>{{ income.name }}</td>
+            <td>{{ income.amount }}</td>
+            <td>
+              <form action="/delete_income/{{ income.id }}"s method="post" name="delete_income">
+                <input type="hidden" name="income_id" value="{{ income.id }}">
+                <button type="submit" class="btn btn-outline-danger">Delete</button>
+
+              </form>
+
+            </td>
+
+
+
+            <td>
+              <form action="/edit_income/{{ income.id }}"s method="post" name="edit">
+                <input type="hidden" name="income_id" value="{{ income.id }}">
+                <button type="submit" class="btn btn-outline-info">edit</button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% endblock %}
+ 

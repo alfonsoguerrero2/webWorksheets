@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- table code/format taken from bootstarp. -->
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">name</th>
+            <th scope="col">amount</th>
+            <th scope="col">delete</th>
+            <th scope="col">edit</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for expend in expenses %}
+          <tr>
+            <th scope="row">{{ expend.id }}</th>
+            <td>{{ expend.name }}</td>
+            <td>{{ expend.amount }}</td>
+            <td>
+              <form action="/delete_expend/{{ expend.id }}"s method="post" name="delete_expend">
+                <input type="hidden" name="expend_id" value="{{ expend.id }}">
+                <button type="submit" class="btn btn-outline-danger">Delete</button>
+
+              </form>
+
+            </td>
+
+
+
+            <td>
+              <form action="/edit_expend/{{ expend.id }}"s method="post" name="edit">
+                <input type="hidden" name="expend_id" value="{{ expend.id }}">
+                <button type="submit" class="btn btn-outline-info">edit</button>
+              </form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% endblock %}
+ 

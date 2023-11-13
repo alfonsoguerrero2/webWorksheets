@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="card">
+    <div class="card-header">
+        <h1>savings</h1>
+        <img src="{{ url_for('static', filename='savings.jpg') }}" alt="Responsive image" style="width: 100px; height: auto;">
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{total}}</h5>
+      <p class="card-text">check the incomes and expendatures pages for more details</p>
+    </div>
+</div>
+<p></p>
+<p></p>
+<p> </p> 
+
+<div class="card">
+  <div class="card-header">
+    <h1>saving goal</h1>
+  </div>
+  <div class="card-body">
+  <!--goal input is the object given by the views.py-->
+  <h5 class="card-title">{{ goal.store_goal }}</h5>
+  <p class="card-text">progress to your goal</p>
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" style="width: {{ calculate_progress }}%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+
+    </div>
+  </div>
+</div>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#goalModal">Set Goal</button>
+<!-- section of code from bootstrap modal and modify to implement a form  -->
+
+<div class="modal fade" id="goalModal" tabindex="-1" role="dialog" aria-labelledby="goalModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="goalModalLabel">Set Savings Goal</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          {% if show_goal_form %}
+            <form action="" method="post" name="input_goal">
+              {{ goal_form.hidden_tag() }}
+        
+              <label for="goal_input">Savings Goal:</label>
+              {{ goal_form.goal_input(class_='goal_form', id='goal_input') }}
+              {% for error in goal_form.goal_input.errors %}
+                <div class="alert alert-danger" role="alert">
+                  [{{ error }}]
+                </div>
+                {% endfor %}
+        
+              <p><input type="submit" class="btn btn-primary" value="save"></p>
+            </form>
+          {% else %}
+            <p>You cannot set a goal at this time.</p>
+          {% endif %}
+        </div>
+        
+        </div>
+      </div>
+    </div>
+    <form action="/eliminate_goals" method="post" name="eliminate_goals_form">
+      <p><input type="submit" class="btn btn-danger" value="Eliminate All Goals"></p>
+    </form>
+  </div>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.css') }}">
+{% endblock %}
